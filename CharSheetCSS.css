@@ -1,0 +1,364 @@
+/* Set up page to ensure all elements appear the same size*/
+html{
+    box-sizing: border-box;
+}
+
+/* Make every element inherit sizing already specified */
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+
+/*=====================GLOBABL STYLES===========================*/
+body{
+   
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color:rgb(0,0,0);
+}
+
+/*H1- used for full title*/
+h1{
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-variant: small-caps;
+}
+
+/*H2- Used for sheet/tab MAIN titles*/
+h2{
+    color: rgb(150,150,200);
+    font-size: 18px;
+    font-variant: small-caps;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/*H3- Used for sheet/tab SECTION titles*/
+h3{
+    color: rgb(101,147,250);
+    font-size: 15px;
+    font-variant: small-caps;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*H4- Used for important elements (like initiative) in sheet tabs*/
+h4{
+    color: rgb(150,150,100);
+    font-size: 14px;
+    font-variant: small-caps;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*H5- used for table index headings*/
+h5{
+    color: rgb(150,150,0);
+    font-size: 14px;
+    font-variant: small-caps;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*HR- used for all horizontal rules. default has margin-top and margin-bottom of 20px*/
+hr{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+    width: 100%;
+}
+
+/*
+global table styles. overwrite specific tables by their class
+ALL TABLE CLASSES (Children of sheet-character :
+    .sheet-basicInfoTable
+    .sheet-attributeInfoTable
+    .sheet-woundsInfoTable
+    .sheet-resourceInfoTable
+*/
+table {
+  background-color: rgb(30,0,120);
+  border-width: 3px;
+  border-color: #aaa;
+  border-style: groove;
+  color: #242424;
+}
+
+/*global table row and column borders*/
+table tr, td, th{
+    text-align: center;
+    color: white;
+    border-width: 1px;
+    border-color: #aaa;
+    border-style: solid;
+    width:auto;
+    padding: 6px;
+}
+
+/*global text input- used to centre text*/
+input[type=text]
+{
+    background-color: rgb(40,40,120);
+    color: white;
+    text-align: center;
+}
+
+input[type=textarea]
+{
+    background-color: rgb(40,40,120);
+    color: white;
+    text-align:center;
+}
+
+/*global DISABLED text input- used to change background colour to indicated disabled field*/
+input[type=text]:disabled
+{
+    background-color: rgb(50,50,100);
+}
+
+/*change position of fieldset mod buttons*/
+.charsheet .repcontrol[data-groupname=repeating_mutations] button.repcontrol_edit, .charsheet .repcontrol[data-groupname=repeating_mutations] button.repcontrol_add {
+  font-family: "Special Elite";
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+
+/*=====================TEXT INPUT BY CLASSES===========================*/
+.sheet-attributeTxtInput
+{
+    width: 30px;
+}
+
+/*=====================TOP NAV BAR BODY===========================*/
+/*Access to wrapper that contains the navbar*/
+.sheet-wrapper
+{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*SPACING*/
+    margin: 0;
+    padding: 10px, 10px, 10px, 10px;
+    /*BACKGROUND*/
+    background-color: rgb(0,0,0);
+    /*FONT*/
+    color: white;
+    width: 100%;
+    height: 70px;
+    /*BORDER*/
+    border-style: none none outset none;
+}
+
+/*=====================NAV TAB BUTTONS===========================*/
+/*Button styling for nav tab buttons*/
+.sheet-tabButton
+{
+
+    background: rgb(0,0,100);
+    background: linear-gradient(to bottom, rgb(50,50,125),rgb(25,25,112),rgb(0,0,100)); 
+    letter-spacing: 1px;
+    border-style: outset outset none outset;
+    border-radius: 5px 5px 0px 0px;
+    width: 110px;
+    text-decoration: underline;
+    font-family: times;
+    font-size: 16px;
+}
+/*=====================NAV TAB HOVER===========================*/
+.sheet-tabButton:hover
+{
+    color: rgb(255, 215, 0);
+    background: linear-gradient(to bottom, #1111aa 50%, #1111c1 calc(50% - 0.8px), rgba(0,0,100,1) 50%, #111196 calc(50% + 0.8px), #000064 100%); 
+    font-weight: bold;
+}
+
+
+/*=====================MAIN TITLE CLASS===========================*/
+.sheet-mainTitle
+{
+    /*SPACING*/
+    /*SIZING*/
+    min-width:100%;
+    /*BACKGROUND*/
+    background: linear-gradient(to top, rgb(50,50,125),rgb(25,25,112),rgb(0,0,100));
+    /*FONT*/
+    font-variant: small-caps;
+    font-family: serif;
+    color: white;
+    text-align: center;
+    /*BORDER*/
+    border-style: double;  
+}
+
+/*=====================NAVBAR===========================*/
+/* Just to change the font colour in the navbar */
+.sheet-navbar
+{
+    color: whitesmoke;
+    margin: 0;
+}
+
+/*=====================NAVBAR UL===========================*/
+/* Applies to ULs in the navbar */
+.sheet-navbar ul {
+    
+    text-align: center;
+    align-items: center;
+    
+    margin: 0;
+    
+    padding: 10px 10px 0px 10px;
+    
+    /*font-weight: bolder;*/
+    font-size: 16px;
+    font-variant: small-caps    
+}
+
+/*=====================MAIN PAGE BODY===========================*/
+.sheet-mainBody
+{
+    display:flex;/*THIS FLEXES ALL CONTAINERS OF CHARACTER SHEET*/
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    
+ text-align: center;
+ color: white;
+ background-color: rgb(0,0,100);   
+}
+
+/*=====================MAIN FOOTER BODY===========================*/
+.sheet-mainFooter
+{
+ color: white;
+ background-color: rgb(190,0,0);   
+}
+
+/*=====================Children classes of "mainBody" on character sheet tab===========================*/
+
+.sheet-basicInfoTableContainer,
+.sheet-attributesInfoContainer,
+.sheet-woundsInfoContainer, 
+.sheet-resourcesInfoContainer, 
+.sheet-initRollContainer, 
+.sheet-lifeSkillsContainer, 
+.sheet-featContainer
+.sheet-itemContainer
+{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width: auto;
+    
+    padding: 15px;
+
+    background-color: rgba(50,50,50,0.5);
+    border-style: outset;    /* outset none none none*/
+    border-radius: 10px;
+    border-color: rgb(150,150,25);
+    box-shadow: 12px 12px 12px rgba(0,0,0,0.5);
+}
+
+/*compunded elements in same div. 
+by row > 
+    "title", "title", NEW ROW, "table", "table"
+*/
+.sheet-lifeSkillsTable, .sheet-proSkillsTable{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: flex-start;
+
+}
+
+.sheet-lifeSkillsTable{
+margin-right:15px;    
+}
+
+.sheet-proSkillsTable{
+margin-left:15px;    
+}
+
+.sheet-txtFeatName, .sheet-txtFeatDesc{
+    width: 95%;
+}
+
+.sheet-tableWrapper{
+    width: 500px;
+}
+
+.sheet-featTable{
+    width:100%;
+}
+
+/*=====================JOURNAL ITEMS CONFIGURATION===========================*/
+.sheet-itemContainer{
+    /*This is the Div that wraps the repeatng fieldset*/
+    width: 90%;
+}
+
+.sheet-itemContainer{
+    /*This is a fieldset that contains all elements*/
+    border-style: inset;
+    border-width:2px;
+    background-color: rgba(200,200,200,0.5);
+}
+
+.sheet-fItems{
+    /*Wrapper that contains bound items per repeating fieldset*/
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.sheet-itemName{
+    /*This is an input text element for item names*/
+    width: 20%;
+
+}
+.sheet-itemQty{
+    /*This is an input text element for item names*/
+    width: 5%;
+    font-family: courier;
+    font-weight: bolder;
+
+}
+
+.sheet-itemDescription{
+    /*This is an input text element for item descriptions*/
+    width: 70%;
+
+}
+
+/*=====================NOTES TEXTBOX CONFIGURATION===========================*/
+.sheet-notesTextArea{
+    width: 90%;
+    height: 300px;
+    resize: none;
+    
+    background-color: rgba(200,200,200,0.5);
+    color: white;
+}
+
+/*=====================TAB BUTTONS CONFIGURATION===========================*/
+	/*Configure the tab buttons*/
+.sheet-character,
+.sheet-skills,
+.sheet-inventory,
+.sheet-weapons,
+.sheet-vehicles,
+.sheet-aivesper {display: none;}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.sheet-tabstoggle[value="skills"] ~ div.sheet-skills,
+.sheet-tabstoggle[value="inventory"] ~ div.sheet-inventory,
+.sheet-tabstoggle[value="weapons"] ~ div.sheet-weapons,
+.sheet-tabstoggle[value="vehicles"] ~ div.sheet-vehicles,
+.sheet-tabstoggle[value="aivesper"] ~ div.sheet-aivesper{display: block;}
+
+

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+    
+<!--============================================================================================-->    
+<!--This is important...somehow. No idea what it does but I'm assured it's important-->
+    <input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='character'  />
+<!--============================================================================================-->
+	<!--Classes: wrapper-(for containment), heading-(h1 header), navbar-(tabs). -->
+	<!--IDs: mainTitle(a h1 element)-->
+    <div class="wrapper">
+        <div class="mainTitle">
+            <h1>Character Sheet</h1>        
+        </div>
+        
+        <div class="navbar">
+		    <ul>
+                <button type="action" name="act_character" class = "tabButton">Character</button>
+                <button type="action" name="act_skills" class = "tabButton">Skills</button>
+                <button type="action" name="act_inventory" class = "tabButton">Inventory</button>
+                <button type="action" name="act_weapons" class = "tabButton">Weapons</button>
+                <button type="action" name="act_vehicles" class = "tabButton">Vehicles</button>
+                <button type="action" name="act_aivesper" class = "tabButton">A.I/Vesper</button>
+            </ul>
+	    </div>	    
+    </div>
+
+<!--================================CHARACTER SHEET TAB CONTENT=====================================-->	
+<div class='sheet-character'>
+
+	<div class = "mainBody">
+
+    <h2>Character Information</h2>
+    
+    <h3>Basic Info</h3>
+    <div class="basicInfoTableContainer">
+	<table class="basicInfoTable">
+        
+        <tbody>
+            <tr>
+                <td><h5>Name</h5></td>
+                <td><input type="text" name="attr_charName" value = "John Jane" id="charName"></td>
+            </tr>
+            <tr>
+                <td><h5>Gender</h5></td>
+                <td><input type="text" name="attr_charGender" value = "Both" id="charGender"></td>
+            </tr>
+            <tr>
+                <td><h5>Race</h5></td>
+                <td><input type="text" name="attr_RACE" value="Human"></td>
+            </tr>
+            <tr>
+                <td><h5>Level</h5></td>
+                <td><input type="text" name="attr_charLevel" value = "1" id="charLevel"></td>
+            </tr>
+            <tr>
+                <td><h5>Proficiency</h5></td>
+                <td><input type="text" name="attr_ProfAmt" value = "0" id ="chaProfLvl"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </div>
+
+<!--|||||||||||||||||||||||||||||||||||||||||SOMETHING IMPORTANT-->
+    <hr>
+    <h3>Quick Rolls</h3>
+    <div class="initRollContainer">
+    <h5>Initiative</h5> <button type='roll' value='&{template:default} {{name= @{charName} rolls [[1d20 + @{MSAgi} &{tracker}]] for initiative.}}' name='roll_Initiative'></button>
+    </div>
+    <hr>
+<!--|||||||||||||||||||||||||||||||||||||||||ATTRIBUTES TABLE-->
+
+    
+    <h3>Attributes</h3>
+    <div class = "attributesInfoContainer">
+    	<table class="attributeInfoTable">
+        <thead>
+        <tr>
+            <td></td>
+            <th><h5>STR</h5></th>
+            <th><h5>REF</h5></th>
+            <th><h5>FOR</h5></th>
+            <th><h5>INT</h5></th>
+            <th><h5>JUD</h5></th>
+            <th><h5>CHA</h5></th>
+            <th><h5>WIL</h5></th>
+            <th><h5>TOU</h5></th>
+        </tr>
+        </thead>
+        
+        <tbody>
+			<tr>
+				<td><h5>Points</h5></td>
+				<td><input name="attr_STR" type="text" value="0" class="attributeTxtInput"></td>
+			    <td><input name="attr_REF" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_FOR" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_INT" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_JUD" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_CHA" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_WIL" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_TOU" type="text" value="0" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+				<td><h5>Mod</h5></td>
+				<td><input name="attr_STRMod" type="text" value="floor((@{STR}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_REFMod" type="text" value="floor((@{REF}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_FORMod" type="text" value="floor((@{FOR}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_INTMod" type="text" value="floor((@{INT}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_JUDMod" type="text" value="floor((@{JUD}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_CHAMod" type="text" value="floor((@{CHA}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_WILMod" type="text" value="floor((@{WIL}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+				<td><input name="attr_TOUMod" type="text" value="floor((@{TOU}-10)/2)" disabled = "true" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+			    <td><h5>Bonus</h5></td>
+				<td><input name="attr_STRBon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_REFBon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_FORBon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_INTBon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_JUDBon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_CHABon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_WILBon" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_TOUBon" type="text" value="0" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+			    <td><h5>Roll</h5></td>
+				<td><button type='roll' value='&{template:default} {{name=Strength check/save}} {{roll=[[1d20 + @{STRmod} + @{STRBon}]]}}' name='roll_StrengthCheck'></button></td>
+			    <td><button type='roll' value='&{template:default} {{name=Reflex check/save}} {{roll=[[1d20 + @{REFmod} + @{REFBon}]]}}' name='roll_ReflexCheck'></button></td>
+				<td><button type='roll' value='&{template:default} {{name=Fortitude check/save}} {{roll=[[1d20 + @{FORmod} + @{FORBon}]]}}'></button></td>
+				<td><button type='roll' value='&{template:default} {{name=Intellect check/save}} {{roll=[[1d20 + @{INTmod} + @{INTBon}]]}}' name='roll_IntellectCheck'></button></td>
+				<td><button type='roll' value='&{template:default} {{name=Judgement check/save}} {{roll=[[1d20 + @{JUDmod} + @{JUDBon}]]}}' name='roll_JudgementCheck'></button></td>
+			    <td><button type='roll' value='&{template:default} {{name=Charm check/save}} {{roll=[[1d20 + @{CHAmod} + @{CHABon}]]}}' name='roll_CharmCheck'></button></td>
+	        	<td><button type='roll' value='&{template:default} {{name=Willpower check/save}} {{roll=[[1d20 + @{WILmod} + @{WILBon}]]}}' name='roll_WillpowerCheck'></button></td>
+			    <td><button type='roll' value='&{template:default} {{name=Toughness check/save}} {{roll=[[1d20 + @{TOUmod} + @{TOUBon}]]}}' name='roll_ToughnessCheck'></button></td>
+			</tr>
+		</tbody>
+		</table>
+</div>
+<!--Close of the DIV for the table container -->
+
+<hr>
+<!--|||||||||||||||||||||||||||||||||||||||||WOUNDS TABLE-->
+<h3>Wounds</h3>
+<div class = "woundsInfoContainer">
+
+    	<table class="woundsInfoTable">
+        <thead>
+        <tr>
+            <td></td>
+            <th><h5>Area</h5></th>
+            <th><h5>Wounds</h5></th>
+            <th><h5>Armour</h5></th>
+            <th><h5>Toughness</h5></th>
+        </tr>
+        </thead>
+        
+        <tbody>
+			<tr>
+				<td><h5>Head</h5></td>
+				<td><p>01-10</p></td>
+				<td>
+				    <input name="attr_HeadWounds" type="text" value="0" class="attributeTxtInput">/
+				    <input name="attr_maxHeadWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_HeadArmour" type="text" value="0" class="attributeTxtInput"></td>
+				<td><input name="attr_HeadToughness" type="text" value="@{TOUMod}" disabled = "true" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+				<td><h5>Neck</h5></td>
+				<td><p>11-13</p></td>
+				<td>
+				    <input name="attr_NeckWounds" type="text" value="0" id="neckWounds" class="attributeTxtInput">/
+				    <input name="attr_maxNeckWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_NeckArmour" type="text" value="0" id="neckArmour" class="attributeTxtInput"></td>
+				<td><input name="attr_NeckToughness" type="text" value="@{TOUMod}" disabled = "true" id="neckWounds" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+			    <td><h5>R. Arm</h5></td>
+			    <td><p>14-22</p></td>
+				<td>
+				    <input name="attr_RightArmWounds" type="text" value="0" id="rightarmWounds" class="attributeTxtInput">/
+				    <input name="attr_maxRARMWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_RightArmArmour" type="text" value="0" id="rightarmArmour" class="attributeTxtInput"></td>
+				<td><input name="attr_RightArmToughness" type="text" value="@{TOUMod}" disabled = "true" id="headWounds" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+			    <td><h5>L. Arm</h5></td>
+			    <td><p>23-31</p></td>
+				<td>
+				    <input name="attr_LeftArmWounds" type="text" value="0" id="leftarmWounds" class="attributeTxtInput">/
+				    <input name="attr_maxLARMWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_LeftArmArmour" type="text" value="0" id="leftArmour" class="attributeTxtInput"></td>
+				<td><input name="attr_LeftArmToughness" type="text" value="@{TOUMod}" disabled = "true" id="leftarmWounds" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+				<td><h5>Torso</h5></td>
+				<td><p>32-68</p></td>
+				<td>
+				    <input name="attr_TorsoWounds" type="text" value="0" id="torsoWounds" class="attributeTxtInput">/
+				    <input name="attr_maxTorsoWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_TorsoArmour" type="text" value="0" id="torsoArmour" class="attributeTxtInput"></td>
+				<td><input name="attr_TorsoToughness" type="text" value="@{TOUMod}" disabled = "true" id="torsoWounds" class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+			    <td><h5>Groin</h5></td>
+			    <td><p>69-73</p></td>
+				<td>
+				    <input name="attr_CrotchWounds" type="text" value="0" id="crotchWounds" class="attributeTxtInput">/
+				    <input name="attr_maxCrotchWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_CrotchArmour" type="text" value="0" id="crotchArmour" class="attributeTxtInput"></td>
+				<td><input name="attr_CrotchToughness" type="text" value="@{TOUMod}" disabled = "true" id="crotchWounds" class="attributeTxtInput"></td>
+			</tr>
+			
+		    <tr>
+			    <td><h5>R. Leg</h5></td>
+			    <td><p>74-86</p></td>
+				<td>
+				    <input name="attr_RighttLegWounds" type="text" value="0" id="rightlegWounds"class="attributeTxtInput">/
+				    <input name="attr_maxRLEGWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_RightLegArmour" type="text" value="0" id="rightlegArmour"class="attributeTxtInput"></td>
+				<td><input name="attr_RightLegToughness" type="text" value="@{TOUMod}" disabled = "true" id="leftlegWounds"class="attributeTxtInput"></td>
+			</tr>
+			
+			<tr>
+			    <td><h5>L. Leg</h5></td>
+			    <td><p>87-100</p></td>
+				<td>
+				    <input name="attr_LeftLegWounds" type="text" value="0" id="leftlegWounds" class="attributeTxtInput">/
+				    <input name="attr_maxLLEGWounds" type="text" value="@{FORMod}" class="attributeTxtInput" disabled = "true">
+				</td>
+				<td><input name="attr_LeftLegArmour" type="text" value="0" id="leftlegArmour" class="attributeTxtInput"></td>
+				<td><input name="attr_LeftLegToughness" type="text" value="@{TOUMod}" disabled = "true" id="leftlegWounds" class="attributeTxtInput"></td>
+			</tr>
+		</tbody>
+</table>
+		
+</div>
+
+<hr>
+<!--|||||||||||||||||||||||||||||||||||||||||RESOURCES TABLE-->
+<h3>Resources</h3>
+<div class = "resourcesInfoContainer">
+
+   	<table class="resourceInfoTable">
+       
+        <thead>
+        <tr>
+            <th colspan="3"><h3>Currency</h3></th>
+            <th colspan="3"><h3>Power Uses</h3></th>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <h5><i>Credits</i></h5>
+            </td>
+            
+            <td>
+                <input type="text" value="0" name="attr_Credits" class="txtCredits"/>
+            </td>
+            
+            <td colspan="2">
+                <h5><i>Chi</i></h5>
+            </td>
+            
+            <td>
+            <input type="text" value="0" name="attr_chiCharges" class="attributeTxtInput">
+                /
+            <input type="text" value="0" name="attr_maxChiCharges" class="attributeTxtInput">
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2"><h5><i>Gold</i></h5></td>
+            <td><input type="text" value="0" name="attr_Gold" class="txtGold"/></td>
+            <td colspan="2"><h5><i>Flair</i></h5></td>
+            <td><input type="text" value="0" name="attr_flairCharges" class="attributeTxtInput">
+                /
+            <input type="text" value="0" name="attr_maxFlairCharges" class="attributeTxtInput">
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td colspan="2"><h5><i>F-Coins</i></h5></td>
+                <td><input type="text" value="0" name="attr_ForceCoins" class="txtForceCoins"/></td>
+            <td colspan="2"><h5><i>Mana</i></h5></td>
+               <td>
+                    <input type="text" value="0" name="attr_manaCharges" class="attributeTxtInput">
+                    /
+                    <input type="text" value="0" name="attr_maxManaCharges" class="attributeTxtInput">
+                </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2"><h5><i>Misc</i></h5></td>
+            <td>
+                <input type="text" value="0" name="attr_MiscCoins" class="txtForceCoins"/>
+            </td>
+            <td colspan="2"><h5><i>Reactor</i></h5></td>
+                <td><input type="text" value="0" name="attr_reactorCharges" class="attributeTxtInput">
+                /
+                <input type="text" value="0" name="attr_maxReactorCharges" class="attributeTxtInput">
+            </td>
+        </tr>
+
+        </thead>
+        
+
+    </table>
+
+</div>
+
+<hr>
+
+<h3>Feats/Abilities</h3>
+<div class = "featContainer">
+<fieldset class="repeating_features">
+
+        <table class = "weapTable">
+            <tbody>
+                <tr>
+                    <th><strong>Feat</strong></th>
+                    <th><strong>Description</strong></th>
+                    <th><strong>Use</strong></th>
+                </tr>
+                							
+                <tr>
+				    <td><input name="attr_featName" type="text" style="width: 100px;"></td>
+				    <td><input name="attr_featDesc" type="text" style="width: 550px;"></td>
+                    <td>
+                        <button 
+                            name="act_useFeat" 
+                            type="roll" 
+                            value= "&{template:default} {{name=@{charName}}}{{Ability='@{featName}'}}{{Description=@{featDesc}}}">
+                        </button>
+                    </td>
+				</tr>
+            </tbody>
+        </table>
+        <br>
+        
+    </fieldset>
+</div><!--END OF WEAPONS TABLE/Fieldset-->
+
+
+
+<!--|||||||||||||||||||||||||||||||||||||||||THE END-->
+<hr>
+<!--|||||||||||||||||||||||||||||||||||||||||THE END-->
+<h2>X-01 Area</h2>
+
+  
+
+
+<h2>X-02 Area</h2>
+
+
+
+<!--|||||||||||||||||||||||||||||||||||||||||THE END-->
+
+	</div><!--end of MAINBODY wrapper-->
+	
+</div><!--END OF "sheet-character"-->
+
+<!--================================SKILLS SHEET TAB CONTENT========================================-->	
+<div class='sheet-skills'>
+    
+    <div class = "mainBody">
+        
+
+
+<!--|||||||||||||||||||||||||||||||||||||||||LIFE SKILLS TABLE-->
+<h2>Skills Tables</h2>
+<div class = "lifeSkillsContainer">
+    
+   	    <table class="lifeSkillsTable">
+   	       <thead>
+   	            <tr>   	     
+   	                <td><h3>Life Skills</h3></td>
+   	                <th><h5>Points</h5></th>
+   	                <th><h5>Pro?</h5></th>
+   	                <th><h5>Bonus</h5></th>
+   	                <th><h5>Roll</h5></th>
+   	            </tr>
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Awareness
+   	                </h5></td>
+   	                    <td><input name="attr_MSAwa" type="text" value="@{JUDMod}+@{proAwa}" disabled = "true" class="attributeTxtInput"></td>
+   	                    <td><input name = "attr_proAwa" type = "checkbox" value = @{ProfAmt}></td>
+   	                    <td><input name="attr_MSAwaBon" type="text" value="0" class="attributeTxtInput"></td>
+   	                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Awareness}} {{roll=[[1d20+[[@{MSAwa}+@{MSAwaBon}]]]]}}' name='roll_AwarenessCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Acting
+   	                </h5></td>
+                        <td><input name="attr_MSAct" type="text" value="@{CHAMod}+@{proAct}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proAct" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSActBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Acting}} {{roll=[[1d20+[[@{MSAct}+@{MSActBon}]]]]}}' name='roll_ActingCheck'></button></td>
+   	            </tr>  
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Agility
+   	                </h5></td>
+                        <td><input name="attr_MSAgi" type="text" value="@{REFMod}+@{proAgi}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proAgi" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSAgiBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Agility}} {{roll=[[1d20+[[@{MSAgi}+@{MSAgiBon}]]]]}}' name='roll_AgilityCheck'></button></td>
+   	            </tr>  
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Beast Mastery
+   	                </h5></td>
+                        <td><input name="attr_MSBea" type="text" value="@{JUDMod}+@{proBea}" disabled = "true" class="attributeTxtInput"</td>
+                        <td><input name = "attr_proBea" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSBeaBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Beast Mastery}} {{roll=[[1d20+[[@{MSBea}+@{MSBeaBon}]]]]}}' name='roll_BeastMasteryCheck'></button></td>
+   	            </tr>  
+   	            
+   	            <tr><td><h5>
+   	                    Convince
+   	                </h5></td>
+                        <td><input name="attr_MSCon" type="text" value="@{CHAMod}+@{proCon}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proCon" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSConBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Convince}} {{roll=[[1d20+[[@{MSCon}+@{MSConBon}]]]]}}' name='roll_ConvinceCheck'></button></td>
+   	            </tr>  
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Cunning
+   	                </h5></td>
+                        <td><input name="attr_MSCun" type="text" value="@{CHAMod}+@{proCun}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proCun" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSCunBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Cunning}} {{roll=[[1d20+[[@{MSCun}+@{MSCunBon}]]]]}}' name='roll_CunningCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Faith
+   	                </h5></td>
+                        <td><input name="attr_MSFai" type="text" value="@{INTMod}+@{proFai}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proFai" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSFaiBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Faith}} {{roll=[[1d20+[[@{MSFai}+@{MSFaiBon}]]]]}}' name='roll_FaithCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Intuition
+   	                </h5></td>
+                        <td><input name="attr_MSInt" type="text" value="@{JUDMod}+@{proInt}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proInt" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSIntBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Intuition}} {{roll=[[1d20+[[@{MSInt}+@{MSIntBon}]]]]}}' name='roll_IntuitionCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Knowledge
+   	                </h5></td>
+                        <td><input name="attr_MSKno" type="text" value="@{INTMod}+@{proKno}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proKno" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSKnoBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Knowledge}} {{roll=[[1d20+[[@{MSKno}+@{MSKnoBon}]]]]}}' name='roll_KnowledgeCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Scrutiny
+   	                </h5></td>
+                        <td><input name="attr_MSScr" type="text" value="@{INTMod}+@{proScr}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proScr" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSScrBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Scrutiny}} {{roll=[[1d20+[[@{MSScr}+@{MSScrBon}]]]]}}' name='roll_ScrutinyCheck'></button></td>
+   	            </tr> 
+   	            
+  	            <tr>     
+   	                <td><h5>
+   	                    Strong Arm
+   	                </h5></td>
+                        <td><input name="attr_MSStr" type="text" value="@{CHAMod}+@{proStr}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proStr" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSStrBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Strong Arm}} {{roll=[[1d20+[[@{MSStr}+@{MSStrBon}]]]]}}' name='roll_StrongArmCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Stealth
+   	                </h5></td>
+                        <td><input name="attr_MSSte" type="text" value="@{REFMod}+@{proSte}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proSte" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSSteBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Stealth}} {{roll=[[1d20+[[@{MSSte}+@{MSSteBon}]]]]}}' name='roll_StealthCheck'></button></td>
+                </tr>
+                
+                <tr>     
+   	                <td><h5>
+   	                    Survival
+   	                </h5></td>
+                        <td><input name="attr_MSSur" type="text" value="@{JUDMod}+@{proSur}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proSur" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSSurBon" type="text" value="0" class="attributeTxtInput"</td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Survival}} {{roll=[[1d20+[[@{MSSur}+@{MSSurBon}]]]]}}' name='roll_SurvivalCheck'></button></td>
+   	            </tr> 
+
+   	            <tr>     
+   	                <td><h5>
+   	                    Trickery
+   	                </h5></td>
+                        <td><input name="attr_MSTri" type="text" value="@{REFMod}+@{proTri}" disabled = "true" class="attributeTxtInput"></td>
+                        <td><input name = "attr_proTri" type = "checkbox" value = @{ProfAmt}></td>
+                        <td><input name="attr_MSTriBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Trickery}} {{roll=[[1d20+[[@{MSTri}+@{MSTriBon}]]]]}}' name='roll_TrickeryCheck'></button></td>
+   	            </tr> 
+       
+  	       </thead> 
+   	    </table>
+<!--|||||||||||||||||||||||||||||||||||||||||CAREER SKILLS TABLE-->
+   	    <table class="proSkillsTable">
+   	       <thead>
+   	            <tr>   	     
+   	                <td><h3>Career Skills</h3></td>
+   	                <th><h5>Points</h5></th>
+   	                <th><h5>Bonus</h5></th>
+   	                <th><h5>Roll</h5></th>
+   	            </tr>
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Armourer
+   	                </h5></td>
+   	                <td><input name="attr_sARM" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sARMBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Armourer}} {{roll=[[1d100<[[@{sARM}+@{sARMBon}]]]]}}' name='roll_ArmourerCheck'></button></td>
+   	            </tr> 
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Biomedical
+   	                </h5></td>
+                    <td><input name="attr_sCYB" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sCYBBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Biomedical}} {{roll=[[1d100<[[@{sCYB}+@{sCYBBon}]]]]}}' name='roll_CyberneticsCheck'></button></td>
+   	            </tr>
+   	            
+   	            <tr>     
+   	                <td><h5>
+   	                    Combat Medicine
+   	                </h5></td>
+   	                <td><input name="attr_sCOMBAT" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sCOMBATBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Combat Medicine}} {{roll=[[1d100<[[@{sCOMBAT}+@{sCOMBATBon}]]]]}}' name='roll_CombatMedicineCheck'></button></td>
+   	            </tr>
+
+   	            <tr>     
+   	                <td><h5>
+   	                    Computing
+   	                </h5></td>
+           	        <td><input name="attr_sCOMP" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sCOMPBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Computing}} {{roll=[[1d100<[[@{sCOMP}+@{sCOMPBon}]]]]}}' name='roll_ComputingCheck'></button></td>
+   	            </tr>
+
+                <tr>     
+   	                <td><h5>
+   	                    Demolitions
+   	                </h5></td>
+                    <td><input name="attr_sDEM" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sDEMBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Demolitions}} {{roll=[[1d100<[[@{sDEM}+@{sDEMBon}]]]]}}' name='roll_DemolitionsCheck'></button></td>
+   	            </tr>
+
+                <tr>     
+   	                <td><h5>
+   	                    Engineering
+   	                </h5></td>
+                    <td><input name="attr_sENG" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sENGBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Engineering}} {{roll=[[1d100<[[@{sENG}+@{sENGBon}]]]]}}' name='roll_EngineeringCheck'></button></td>
+   	            </tr>
+        
+                <tr>     
+   	                <td><h5>
+   	                    Firearms
+   	                </h5></td>
+                    <td><input name="attr_sFIR" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sFIRBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Firearms}} {{roll=[[1d100<[[@{sFIR}+@{sFIRBon}]]]]}}' name='roll_FirearmsCheck'></button></td>
+   	            </tr>
+   	        
+   	           	<tr>     
+   	                <td><h5>
+   	                    Hacking
+   	                </h5></td>
+                    <td><input name="attr_sHAC" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><input name="attr_sHACBon" type="text" value="0" class="attributeTxtInput"></td>
+                    <td><button type='roll' value='&{template:default} {{name=@{charName}: Hacking}} {{roll=[[1d100<[[@{sHAC}+@{sHACBon}]]]]}}' name='roll_HackingCheck'></button></td>
+   	            </tr>
+   	        
+   	           	<tr>     
+   	                <td><h5>
+   	                    Melee
+   	                </h5></td>
+                        <td><input name="attr_sMEL" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><input name="attr_sMELBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Melee}} {{roll=[[1d100<[[@{sMEL}+@{sMELBon}]]]]}}' name='roll_MeleeCheck'></button></td>
+   	            </tr>
+
+
+                <tr>
+                <td><h5>
+   	                    Piloting
+   	                </h5></td>
+                        <td><input name="attr_sPIL" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><input name="attr_sPILBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Piloting}} {{roll=[[1d100<[[@{sPIL}+@{sPILBon}]]]]}}' name='roll_PilotingCheck'></button></td>
+                </tr>
+    
+                <tr>
+                <td><h5>
+   	                    Research
+   	                </h5></td>
+                        <td><input name="attr_sRES" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><input name="attr_sRESBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Research}} {{roll=[[1d100<[[@{sRES}+@{sRESBon}]]]]}}' name='roll_ResearchCheck'></button></td>
+                </tr>
+    
+                <tr>
+                <td><h5>
+   	                    Surgery
+   	                </h5></td>
+                        <td><input name="attr_sSUR" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><input name="attr_sSURBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Surgery}} {{roll=[[1d100<[[@{sSUR}+@{sSURBon}]]]]}}' name='roll_SurgeryCheck'></button></td>
+                </tr>
+    
+                <tr>
+                <td><h5>
+   	                    Unarmed
+   	                </h5></td>
+                        <td><input name="attr_sSTRE" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><input name="attr_sSTREBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Unarmed}} {{roll=[[1d100<[[@{sSTRE}+@{sSTREBon}]]]]}}' name='roll_StreetwiseCheck'></button></td>
+                </tr>
+                
+                <tr>
+                <td><h5>
+   	                    Underworld
+   	                </h5></td>
+                        <td><input name="attr_sUND" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><input name="attr_sUNDBon" type="text" value="0" class="attributeTxtInput"></td>
+                        <td><button type='roll' value='&{template:default} {{name=@{charName}: Underworld}} {{roll=[[1d100<[[@{sUND}+@{sUNDBon}]]]]}}' name='roll_UnderworldCheck'></button></td>
+                </tr>
+                
+   	       </thead> 
+   	    </table>
+   	    
+</div> <!--End of Proskills-->
+  <hr>
+    Krisp! Tem study ver harb!
+    </div><!--end of "mainBody" div-->
+</div><!--END OF "sheet-skills"-->
+
+<!--================================INVENTORY SHEET TAB CONTENT=====================================-->	
+<div class='sheet-inventory'>
+        
+    <div class = "mainBody">
+
+    <h2>Inventory/Notes</h2>
+ 
+    <hr>
+    
+    <h3>Personal Belongings</h3>
+
+<div class = "itemContainer">
+    <fieldset class="repeating_items">
+        <div class = "fItem">
+            <input type="text" class="itemName" placeholder="Item name">
+            <input type="text" class="itemDescription" placeholder="Describe the item">
+        </div>
+    </fieldset>
+</div><!--END OF itemcontainer-->
+
+<br>
+    
+    <hr>
+    
+    <h3>Armour</h3>
+
+<div class = "itemContainer">
+    <fieldset class="repeating_items">
+        <div class = "fItem">
+            <input type="text" class="itemName" placeholder="Armour name">
+            <input type="text" class="itemQty" placeholder="DEF">
+            <input type="text" class="itemDescription" placeholder="Armour Descripton">
+        </div>
+    </fieldset>
+</div><!--END OF itemcontainer-->
+
+<br>
+    
+    <hr>
+
+    <h3>Utilities</h3>
+
+<div class = "itemContainer">
+    <fieldset class="repeating_items">
+        <div class = "fItem">
+            <input type="text" class="itemName" placeholder="Utility name">
+            <input type="text" class="itemDescription" placeholder="Utility description">
+        </div>
+    </fieldset>
+</div><!--END OF itemcontainer-->
+
+<br>
+    
+    <hr>
+
+    <h3>Properties</h3>
+
+<div class = "itemContainer">
+    <fieldset class="repeating_items">
+        <div class = "fItem">
+            <input type="text" class="itemName" placeholder="Property name">
+            <input type="text" class="itemDescription" placeholder="Property description">
+        </div>
+    </fieldset>
+</div><!--END OF itemcontainer-->
+
+
+<br>
+
+    [1997Kromer]
+
+    </div><!--end of "mainBody" div-->
+</div><!--END OF "sheet-inventory"-->
+
+<!--================================WEAPONS SHEET TAB CONTENT=======================================-->	
+<div class='sheet-weapons'>
+    <div class = "mainBody">
+
+    <h2>Weapons</h2>
+    
+    <div class = "featContainer">
+    
+     <fieldset class="repeating_rangedweapons">
+                            
+        <table class = "weapTable">
+			<tbody>
+                
+				<tr>
+    			    <th><h5>Name</h5></th>
+                    <th><h5>Damage</h5></th>
+					<th><h5>Inflicts</h5></th>
+				</tr>
+				
+				<tr>
+				<td><input name="attr_rangedweaponname" type="text" style="width: 70px;"></td>
+				<td><input name="attr_dmgdicecount" type="text" style="width: 25px;"><strong style="color:white"> d </strong><input name="attr_dmgdicefaces" type="text" style="width: 25px;"></td>
+				<td><input name="attr_damagetype" type="text" style="width: 70px;"></td>
+				</tr>
+							
+				<tr>
+				    <th><h5>Damage +</h5></th>
+					<th><h5>Penetration</h5></th>
+					<th><h5>Attack +</h5></th>
+				</tr>
+							
+				<tr>    
+                    <td><input name="attr_dambonus" type="text" value="0"style="width: 25px;"></td>
+                    <td><input name="attr_attpen" type="text" value="0" style="width: 25px;"></td>
+                    <td><input name="attr_attbonus" type="text" value="0" style="width: 25px;"></td>
+				</tr>   
+							
+							
+				<tr>
+                    <th colspan="3">
+                    <h5>Roll this as a...</h5>
+                    <br>
+                    <p>Ranged Attack
+                        <button name="roll_meleehit" type="roll" value= "&{template:default} {{name=@{rangedweaponname}}}{{Attack=[[1d100]] < Target [[@{sFIR} + @{sFIRBon} + @{attbonus}]]}}{{Damage=[[@{dmgdicecount}d@{dmgdicefaces}+@{dambonus}]] @{damagetype}}}{{Penetration=[[@{attpen}]]}}{{Location=[[1d100]]}}">
+                        </button> 
+                    </p>           
+                    <p>Melee Attack
+                        <button name="roll_meleehit" type="roll" value= "&{template:default} {{name=@{rangedweaponname}}}{{Attack=[[1d100]] < Target [[@{sMEL} + @{sMELBon} + @{attbonus}]]}}{{Damage=[[@{dmgdicecount}d@{dmgdicefaces}+@{dambonus}]] @{damagetype}}}{{Penetration=[[@{attpen}]]}}{{Location=[[1d100]]}}">
+                        </button>
+                    </p>
+                    
+                    </th>
+                </tr>
+		    </tbody>
+        </table>
+    </fieldset>
+
+</div><!--END OF featContainter-->
+    
+    On days like this, kids like you should be burning in hell. 
+    </div><!--end of "mainBody" div-->
+</div><!--END OF "sheet-weapons"-->
+
+<!--================================VEHICLES SHEET TAB CONTENT======================================-->	
+<div class='sheet-vehicles'>
+        <div class = "mainBody">
+
+    <h2>Vehicles</h2>
+    <hr>
+    
+    Kris! Get in the car!
+    </div><!--end of "mainBody" div-->
+</div><!--END OF "sheet-vehicles"-->
+
+<!--================================AI/VESPER SHEET TAB CONTENT=====================================-->	
+<div class='sheet-aivesper'>
+        <div class = "mainBody">
+
+    <h2>A.I/Vesper</h2>
+    <hr>
+    
+    It's just garbage noise
+    </div><!--end of "mainBody" div-->
+</div><!--END OF "sheet-aivesper"-->
+
+<!--============================================================================================-->	
+
+<script type="text/worker">
+    const buttonlist = ["character","skills","inventory","weapons","vehicles","aivesper"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+</script>
+	
+</body>
+</html>
